@@ -6,8 +6,14 @@ from typing import Dict, List
 from datetime import datetime
 from app.config import settings
 
-from app.agents.router import Router
-from app.agents.perception_agent import PerceptionAgent
+try:
+    from app.agents.router import Router
+    from app.agents.perception_agent import PerceptionAgent
+    AGENTS_AVAILABLE = True
+except ImportError:
+    AGENTS_AVAILABLE = False
+    Router = None
+    PerceptionAgent = None
 
 
 class AgentService:

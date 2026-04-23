@@ -1,7 +1,13 @@
-from app.agents.support_agent import SupportAgent
-from app.agents.knowledge_agent import KnowledgeAgent
-from app.agents.intervention_agent import InterventionAgent
-
+try:
+    from app.agents.support_agent import SupportAgent
+    from app.agents.knowledge_agent import KnowledgeAgent
+    from app.agents.intervention_agent import InterventionAgent
+    AGENTS_AVAILABLE = True
+except ImportError:
+    AGENTS_AVAILABLE = False
+    SupportAgent = None
+    KnowledgeAgent = None
+    InterventionAgent = None
 
 class Router:
     def __init__(self):

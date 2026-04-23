@@ -10,6 +10,7 @@ python-multipart==0.0.6
 websockets==12.0
 httpx==0.26.0
 numpy==1.26.3
-sentence-transformers>=2.2.0
-openai>=1.0.0
 python-dotenv>=1.0.0
+
+# sentence-transformers>=2.2.0  # 暂时注释掉，加速部署
+# openai>=1.0.0  # 暂时注释掉，加速部署

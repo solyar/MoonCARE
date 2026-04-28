@@ -12,5 +12,5 @@ httpx==0.26.0
 numpy==1.26.3
 python-dotenv>=1.0.0
 
-# sentence-transformers>=2.2.0  # 暂时禁用
-# openai>=1.0.0  # 暂时禁用
+sentence-transformers>=2.2.0
+openai>=1.0.0

@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const api = axios.create({
-  baseURL: '/api/v1',
+  baseURL: 'https://mooncare.onrender.com/api/v1',
   timeout: 60000,  // 60 seconds for LLM API calls
   headers: {
     'Content-Type': 'application/json'

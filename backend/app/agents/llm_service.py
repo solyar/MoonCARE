@@ -5,11 +5,18 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-from openai import OpenAI
+try:
+    from openai import OpenAI
+    OPENAI_AVAILABLE = True
+except ImportError:
+    OPENAI_AVAILABLE = False
+    OpenAI = None
 
 
 class LLMService:
     def __init__(self):
+        if not OPENAI_AVAILABLE:
+            raise ImportError("openai package not installed. Please install with: pip install openai")
         self.client = OpenAI(
             api_key=os.getenv("OPENAI_API_KEY"),
             base_url=os.getenv("OPENAI_BASE_URL"),

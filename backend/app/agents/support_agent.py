@@ -1,8 +1,15 @@
-from app.agents.llm_service import LLMService
+try:
+    from app.agents.llm_service import LLMService
+    from app.agents.llm_service import OPENAI_AVAILABLE
+except ImportError:
+    LLMService = None
+    OPENAI_AVAILABLE = False
 
 
 class SupportAgent:
     def __init__(self):
+        if not OPENAI_AVAILABLE:
+            raise ImportError("openai package not installed. Please install with: pip install openai")
         self.llm = LLMService()
 
     def respond(self, message: str, state: dict) -> str:

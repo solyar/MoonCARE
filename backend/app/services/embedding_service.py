@@ -1,8 +1,15 @@
-from sentence_transformers import SentenceTransformer
+try:
+    from sentence_transformers import SentenceTransformer
+    SENTENCE_TRANSFORMERS_AVAILABLE = True
+except ImportError:
+    SentenceTransformer = None
+    SENTENCE_TRANSFORMERS_AVAILABLE = False
 
 
 class EmbeddingService:
     def __init__(self):
+        if not SENTENCE_TRANSFORMERS_AVAILABLE:
+            raise ImportError("sentence-transformers not installed. Please run: pip install sentence-transformers")
         self._model = None
         self._model_loading_failed = False
         self._loading_tried = False
